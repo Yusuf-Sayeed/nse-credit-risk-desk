@@ -4,7 +4,7 @@ A portfolio-level credit risk model for 10 NSE-listed companies, built end-to-en
 
 **Pipeline:** Merton Structural Model &rarr; Expected Loss (PD x LGD x EAD) &rarr; Correlated Monte Carlo Simulation &rarr; Stress Testing &rarr; Excel Dashboard
 
-Full methodology, formulas, and a detailed discussion of model limitations are in [`METHODOLOGY.md`](METHODOLOGY.md).
+Full methodology, formulas, and a detailed discussion of model limitations are in [`NSE_Credit_Risk_Desk_Methodology.docx`](NSE_Credit_Risk_Desk_Methodology.docx).
 
 ---
 
@@ -128,7 +128,7 @@ This model is a portfolio/learning project, not a production credit risk system.
 - `yfinance`'s total debt figure for HDFC Bank includes customer deposits, which is not directly comparable to non-financial-firm borrowings.
 - All 10 companies carry equal notional exposure, which understates real-world concentration risk.
 
-The full list, with explanations, is in [`METHODOLOGY.md`](METHODOLOGY.md).
+The full list, with explanations, is in [`NSE_Credit_Risk_Desk_Methodology.docx`](NSE_Credit_Risk_Desk_Methodology.docx).
 
 ## Tech stack
 
