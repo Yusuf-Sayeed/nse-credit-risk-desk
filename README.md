@@ -47,8 +47,7 @@ nse-credit-risk-desk/
 ├── data/                    # Generated CSVs and simulation output (created on run)
 ├── outputs/                 # Generated Excel dashboard (created on run)
 |
-├── METHODOLOGY.md            # Full methodology, formulas, assumptions, limitations
-└── requirements.txt
+└── NSE_Credit_Risk_Desk_Methodology.docx   # Full methodology, formulas, assumptions, limitations
 ```
 
 ## Methodology summary
