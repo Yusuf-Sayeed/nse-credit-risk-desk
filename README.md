@@ -129,6 +129,18 @@ This model is a portfolio/learning project, not a production credit risk system.
 
 The full list, with explanations, is in [`NSE_Credit_Risk_Desk_Methodology.docx`](NSE_Credit_Risk_Desk_Methodology.docx).
 
+## Author
+
+**Yusuf Sayeed**
+
+Aspiring Market & Credit Risk Analyst | FRM Part 1 Cleared, FMVA Certified
+
+- LinkedIn: [https://www.linkedin.com/in/yusuf-sayeed-fmva%C2%AE-711521315/]
+- GitHub: [@Yusuf-Sayeed](https://github.com/Yusuf-Sayeed)
+- Email: [sayeedyusuf03@gmail.com]
+
+This project is part of a broader quantitative risk portfolio, alongside [NSE Risk Desk](https://github.com/Yusuf-Sayeed/NSE-Risk-Desk), a market risk engine covering VaR, Expected Shortfall, and stress testing for a 5-stock NSE equity portfolio.
+
 ## Tech stack
 
 Python, NumPy, pandas, SciPy (`optimize`, `stats`), yfinance, openpyxl
