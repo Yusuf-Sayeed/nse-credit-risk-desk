@@ -1,19 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[57]:
-
-
 import numpy as np
 import pandas as pd
 import yfinance as yf
 import scipy.stats as stats
 import scipy.optimize as opt
 import os
-
-
-# In[58]:
-
 
 TICKERS = {
     "M&M.NS" : "Mahindra & Mahindra",
@@ -29,15 +19,10 @@ TICKERS = {
 }
 
 WEIGHTS = np.full(10, 0.1) # Reserved for future portfolio weighting
-
 START = "2024-06-01"
 END = "2026-06-01"
-
 RISK_FREE_RATE = 0.065
 TIME_HORIZON = 1
-
-
-# In[59]:
 
 
 def fetch_prices(tickers, start_date, end_date):
@@ -53,14 +38,8 @@ def fetch_prices(tickers, start_date, end_date):
     return prices
 
 
-# In[60]:
-
-
 prices = fetch_prices(TICKERS, START, END)
 prices = prices.ffill()
-
-
-# In[61]:
 
 
 def compute_log_returns(prices):
@@ -217,4 +196,3 @@ merton_df
 
 os.makedirs("data", exist_ok=True)
 merton_df.to_csv("data/merton_results.csv")
-
