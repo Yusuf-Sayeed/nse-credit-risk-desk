@@ -49,13 +49,7 @@ def compute_log_returns(prices):
     return log_returns
 
 
-# In[62]:
-
-
 log_returns = compute_log_returns(prices)
-
-
-# In[63]:
 
 
 def compute_equity_volatility(log_returns):
@@ -66,13 +60,7 @@ def compute_equity_volatility(log_returns):
     return annualized_vol.sort_values()
 
 
-# In[64]:
-
-
 sigma_vol = compute_equity_volatility(log_returns)
-
-
-# In[65]:
 
 
 def fetch_market_cap(tickers):
@@ -87,14 +75,8 @@ def fetch_market_cap(tickers):
     return pd.Series(market_cap)
 
 
-# In[66]:
-
-
 market_caps = fetch_market_cap(TICKERS)
-market_caps
-
-
-# In[67]:
+print(market_caps)
 
 
 def fetch_total_debt(tickers):
@@ -109,14 +91,8 @@ def fetch_total_debt(tickers):
     return pd.Series(total_debt)
 
 
-# In[68]:
-
-
 total_debt = fetch_total_debt(TICKERS)
-total_debt
-
-
-# In[69]:
+print(total_debt)
 
 
 def merton_solver(E, sigma_E, D, r, T):
@@ -154,9 +130,6 @@ def merton_solver(E, sigma_E, D, r, T):
     return V, sigma_V, ier
 
 
-# In[70]:
-
-
 def compute_dd_pd(V, sigma_V, D, r, T):
 
     # Note: uses r - 0.5*sigma_V² (real world drift, not risk neutral like d1)
@@ -167,8 +140,6 @@ def compute_dd_pd(V, sigma_V, D, r, T):
 
     return DD, PD
 
-
-# In[71]:
 
 
 results = {}
@@ -188,10 +159,7 @@ for t, name in TICKERS.items():
     results[name] = {"V": V, "sigma_V": sigma_V, "DD": DD, "PD": PD}
 
 merton_df = pd.DataFrame(results).T
-merton_df
-
-
-# In[72]:
+print(merton_df)
 
 
 os.makedirs("data", exist_ok=True)
