@@ -1,18 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[18]:
-
-
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
 from merton_model import merton_df
 from expected_loss import el_df
 from merton_model import log_returns
-
-
-# In[19]:
 
 
 def compute_correlation_matrix(log_returns):
@@ -24,13 +15,7 @@ def compute_correlation_matrix(log_returns):
     return corr_martix
 
 
-# In[20]:
-
-
 correlation_matrix = compute_correlation_matrix(log_returns)
-
-
-# In[21]:
 
 
 def cholesky_decomposition(correlation_matrix):
@@ -44,13 +29,7 @@ def cholesky_decomposition(correlation_matrix):
     return L
 
 
-# In[22]:
-
-
 L = cholesky_decomposition(correlation_matrix)
-
-
-# In[23]:
 
 
 def run_simulation(merton_df, el_df, L, n_simulations = 10000):
@@ -76,16 +55,10 @@ def run_simulation(merton_df, el_df, L, n_simulations = 10000):
     return np.array(portfolio_losses)
 
 
-# In[24]:
-
-
 portfolio_losses = run_simulation(merton_df, el_df, L)
 print(f"Simulations run: {len(portfolio_losses)}")
 print(f"Mean Loss: {portfolio_losses.mean():,.2f}")
 print(f"Max Loss: {portfolio_losses.max():,.2f}")
-
-
-# In[25]:
 
 
 def compute_credit_var(portfolio_losses, confidence = 0.99):
@@ -102,13 +75,7 @@ def compute_credit_var(portfolio_losses, confidence = 0.99):
     return exp_losses, var, credit_var
 
 
-# In[26]:
-
-
 compute_credit_var(portfolio_losses, confidence = 0.99)
-
-
-# In[27]:
 
 
 el, var, credit_var = compute_credit_var(portfolio_losses)
@@ -117,8 +84,4 @@ print(f"Credit VaR 99%: ₹{var:,.0f}")
 print(f"Unexpected Loss: ₹{credit_var:,.0f}")
 
 
-# In[28]:
-
-
 np.save("data/portfolio_losses.npy", portfolio_losses)
-
