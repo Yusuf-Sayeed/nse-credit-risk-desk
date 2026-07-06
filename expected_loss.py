@@ -1,15 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
-
 import pandas as pd
 import numpy as np
 from merton_model import merton_df, TICKERS
-
-
-# In[4]:
 
 
 NOTIONAL = 100_00_00_000
@@ -26,9 +17,6 @@ ALL_LGD = {
     "HDFC Bank" : 0.55,
     "Reliance Industries" : 0.35
 }
-
-
-# In[5]:
 
 
 def expected_loss(merton_df, lgd_dict, notional):
@@ -53,15 +41,8 @@ def expected_loss(merton_df, lgd_dict, notional):
     return results
 
 
-# In[6]:
-
-
 expected_loss(merton_df, ALL_LGD, NOTIONAL)
-
-
-# In[58]:
 
 
 el_df = expected_loss(merton_df, ALL_LGD, NOTIONAL)
 el_df.to_csv("data/expected_loss.csv")
-
