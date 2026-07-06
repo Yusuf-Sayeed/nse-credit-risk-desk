@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[20]:
-
-
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
@@ -14,9 +8,6 @@ from merton_model import log_returns
 from portfolio_simulation import L, run_simulation, compute_credit_var
 from merton_model import merton_solver, compute_dd_pd, RISK_FREE_RATE, TIME_HORIZON
 from merton_model import market_caps, total_debt, sigma_vol
-
-
-# In[21]:
 
 
 def stress_rate_spike(merton_df, el_df, L):
@@ -45,13 +36,7 @@ def stress_rate_spike(merton_df, el_df, L):
     return el, var, credit_var
 
 
-# In[22]:
-
-
 stress_rate_spike(merton_df, el_df, L)
-
-
-# In[23]:
 
 
 rate_el, rate_var, rate_credit_var = stress_rate_spike(merton_df, el_df, L)
@@ -59,9 +44,6 @@ print(f"Rate Spike Scenario:")
 print(f"Expected Loss:   ₹{rate_el:,.0f}")
 print(f"Credit VaR 99%:  ₹{rate_var:,.0f}")
 print(f"Unexpected Loss: ₹{rate_credit_var:,.0f}")
-
-
-# In[24]:
 
 
 def stress_market_crash(merton_df, el_df, L):
@@ -89,17 +71,11 @@ def stress_market_crash(merton_df, el_df, L):
     return el, var, credit_var
 
 
-# In[25]:
-
-
 crash_el, crash_var, crash_credit_var = stress_market_crash(merton_df, el_df, L)
 print(f"Market Crash Scenario:")
 print(f"Expected Loss:   ₹{crash_el:,.0f}")
 print(f"Credit VaR 99%:  ₹{crash_var:,.0f}")
 print(f"Unexpected Loss: ₹{crash_credit_var:,.0f}")
-
-
-# In[26]:
 
 
 def stress_sector_collapse(merton_df, el_df, L):
@@ -116,17 +92,11 @@ def stress_sector_collapse(merton_df, el_df, L):
     return el, var, credit_var
 
 
-# In[27]:
-
-
 sector_el, sector_var, sector_credit_var = stress_sector_collapse(merton_df, el_df, L)
 print(f"Sector Collapse Scenario:")
 print(f"Expected Loss:   ₹{sector_el:,.0f}")
 print(f"Credit VaR 99%:  ₹{sector_var:,.0f}")
 print(f"Unexpected Loss: ₹{sector_credit_var:,.0f}")
-
-
-# In[28]:
 
 
 baseline_losses = run_simulation(merton_df, el_df, L)
@@ -142,10 +112,3 @@ stress_results = {
 stress_df = pd.DataFrame(stress_results, index=["EL", "VaR 99%", "Credit VaR"]).T
 stress_df.to_csv("data/stress_results.csv")
 print(stress_df)
-
-
-# In[ ]:
-
-
-
-
