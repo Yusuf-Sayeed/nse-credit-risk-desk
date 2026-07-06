@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import pandas as pd
 import os
@@ -16,13 +10,7 @@ from expected_loss import el_df
 from stress_testing import stress_df
 
 
-# In[2]:
-
-
 portfolio_losses = np.load("data/portfolio_losses.npy")
-
-
-# In[3]:
 
 
 wb = Workbook()
@@ -38,15 +26,9 @@ ws_stress = wb.create_sheet("Stress Testing")
 ws_loss = wb.create_sheet("Loss Distribution")
 
 
-# In[4]:
-
-
 ws_summary['A1'] = 'NSE Credit Risk Dashboard'
 ws_summary['A2'] = 'Portfolio: 10 Indian Listed Companies | Model: Merton Structural + Monte Carlo'
 ws_summary['A4'] = 'Key Metrics'
-
-
-# In[5]:
 
 
 ws_summary['A5'] = 'Portfolio Size'
@@ -79,9 +61,6 @@ ws_summary['A10'] = 'Most Dangerous Stress Scenario'
 ws_summary['B10'] = f"{worst_scenario} (₹{worst_scenario_var:,.0f} Credit VaR)"
 
 
-# In[6]:
-
-
 # Title formatting
 ws_summary['A1'].font = Font(bold=True, size=16, color='FFFFFF')
 ws_summary['A1'].fill = PatternFill('solid', start_color='1F4E79')
@@ -103,9 +82,6 @@ for row in [6, 7, 8]:
     ws_summary[f'B{row}'].number_format = '₹#,##0'
 
 
-# In[7]:
-
-
 headers = ['Company', 'Asset Value (V)', 'Asset Volatility', 'Distance to Default', 'Probability of Default']
 
 for col, header in enumerate(headers, 1):
@@ -114,9 +90,6 @@ for col, header in enumerate(headers, 1):
     cell.font = Font(bold=True, color='FFFFFF')
     cell.fill = PatternFill('solid', start_color='1F4E79')
     cell.alignment = Alignment(horizontal='center')
-
-
-# In[8]:
 
 
 for row, (name, data) in enumerate(merton_df.iterrows(), 2):
@@ -137,9 +110,6 @@ for col, width in zip(['A','B','C','D','E'], [25, 20, 18, 20, 22]):
     ws_merton.column_dimensions[col].width = width
 
 
-# In[9]:
-
-
 headers = ['Company', 'PD', 'LGD', 'EAD', 'Expected Loss']
 
 for col, header in enumerate(headers, 1):
@@ -148,9 +118,6 @@ for col, header in enumerate(headers, 1):
     cell.font = Font(bold=True, color='FFFFFF')
     cell.fill = PatternFill('solid', start_color='1F4E79')
     cell.alignment = Alignment(horizontal='center')
-
-
-# In[10]:
 
 
 for row, (name, data) in enumerate(el_df.iterrows(), 2):
@@ -171,9 +138,6 @@ for col, width in zip(['A','B','C','D','E'], [25, 15, 10, 20, 20]):
     ws_el.column_dimensions[col].width = width
 
 
-# In[11]:
-
-
 headers = ['Scenario', 'Expected Loss', 'Credit VaR 99%', 'Unexpected Loss']
 
 for col, header in enumerate(headers, 1):
@@ -182,9 +146,6 @@ for col, header in enumerate(headers, 1):
     cell.font = Font(bold=True, color='FFFFFF')
     cell.fill = PatternFill('solid', start_color='1F4E79')
     cell.alignment = Alignment(horizontal='center')
-
-
-# In[12]:
 
 
 for row, (scenario, data) in enumerate(stress_df.iterrows(), 2):
@@ -206,9 +167,6 @@ for col in [1, 2, 3, 4]:
 # Column widths
 for col, width in zip(['A','B','C','D'], [20, 20, 20, 20]):
     ws_stress.column_dimensions[col].width = width
-
-
-# In[13]:
 
 
 # Header
@@ -239,16 +197,6 @@ ws_loss.column_dimensions['A'].width = 20
 ws_loss.column_dimensions['B'].width = 15
 
 
-# In[14]:
-
-
 os.makedirs('outputs', exist_ok=True)
 wb.save('outputs/NSE_Credit_Risk_Desk.xlsx')
 print("Dashboard saved successfully")
-
-
-# In[ ]:
-
-
-
-
